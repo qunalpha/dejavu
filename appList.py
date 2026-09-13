@@ -2,7 +2,7 @@ import win32gui
 import win32process
 import psutil
 
-def getWindowList():
+def getWindowList() -> list[tuple[int, str, str]]:
     application_list = []
 
     def enum_window_callback(hwnd, extra):
@@ -18,5 +18,6 @@ def getWindowList():
     return application_list
 
 if __name__ == "__main__":
+    print(f"{"PID":<10} | {"Process":<30} | Name\n")
     for i in getWindowList():
         print(f"{i[0]:<10} | {i[1]:<30} | {i[2]}")
